@@ -77,7 +77,7 @@ class web extends CI_Controller
                 $this->db->from('class_routine');
                 $this->db->order_by("date_time", "desc");
                 if ($sn != '') {
-                    $this->db->where("class_id", $sn);
+                    $this->db->where("id", $sn);
                 } elseif ($sub_id != '') {
                     $this->db->where("sub_id", $sub_id);
                 } elseif ($class_id != '') {
@@ -110,7 +110,6 @@ class web extends CI_Controller
 
 
             $this->load->view('admin/include/admin_footer');
-
         }
     }
 
@@ -144,41 +143,41 @@ class web extends CI_Controller
             redirect('/auth/login/');
         } else {
 
-        $last_row = $this->db->select('id')->order_by('id', "desc")->limit(1)->get('class_routine')->row();
-        if(empty($last_row)){
-            $new_id = 1;
-        }else{
-            $new_id = $last_row->id + 1;
-        }
+            $last_row = $this->db->select('id')->order_by('id', "desc")->limit(1)->get('class_routine')->row();
+            if (empty($last_row)) {
+                $new_id = 1;
+            } else {
+                $new_id = $last_row->id + 1;
+            }
 
-		$_FILES['file']['name']       = $_FILES['attachment']['name'];
-		$_FILES['file']['type']       = $_FILES['attachment']['type'];
-		$_FILES['file']['tmp_name']   = $_FILES['attachment']['tmp_name'];
-		$_FILES['file']['error']      = $_FILES['attachment']['error'];
-		$_FILES['file']['size']       = $_FILES['attachment']['size'];
+            $_FILES['file']['name']       = $_FILES['attachment']['name'];
+            $_FILES['file']['type']       = $_FILES['attachment']['type'];
+            $_FILES['file']['tmp_name']   = $_FILES['attachment']['tmp_name'];
+            $_FILES['file']['error']      = $_FILES['attachment']['error'];
+            $_FILES['file']['size']       = $_FILES['attachment']['size'];
 
-		$config['upload_path'] = './assets/images/uploads/';
-		$config['allowed_types'] = 'gif|jpg|png|csv|xlsx|xlx|doc|docx';
-		$config['max_size'] = '4000';
-		$config['max_width']  = '2200';
-		$config['max_height']  = '1800';
-		$config['overwrite'] = TRUE;
-		$config['encrypt_name'] = FALSE;
-		$config['remove_spaces'] = TRUE;
-		$name = $new_id;
-		$dname = explode(".", $_FILES['file']['name']);
-		$ext = end($dname);
-		$new_name = $name . '.' . $ext;
-		$config['file_name'] = $new_name;
+            $config['upload_path'] = './assets/images/uploads/';
+            $config['allowed_types'] = 'gif|jpg|png|csv|xlsx|xlx|doc|docx';
+            $config['max_size'] = '4000';
+            $config['max_width']  = '2200';
+            $config['max_height']  = '1800';
+            $config['overwrite'] = TRUE;
+            $config['encrypt_name'] = FALSE;
+            $config['remove_spaces'] = TRUE;
+            $name = $new_id;
+            $dname = explode(".", $_FILES['file']['name']);
+            $ext = end($dname);
+            $new_name = $name . '.' . $ext;
+            $config['file_name'] = $new_name;
 
-		if (!is_dir($config['upload_path'])) die("THE UPLOAD DIRECTORY DOES NOT EXIST");
-		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload('attachment')) {
-			// echo $this->upload->display_errors();
-			$attachment = $this->upload->display_errors();
-		} else {
-			$attachment = $ext;
-		}
+            if (!is_dir($config['upload_path'])) die("THE UPLOAD DIRECTORY DOES NOT EXIST");
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('attachment')) {
+                // echo $this->upload->display_errors();
+                $attachment = $this->upload->display_errors();
+            } else {
+                $attachment = $ext;
+            }
 
             $class_id = $this->input->post('class_id');
             $sub_id = $this->input->post('sub_id');
@@ -234,39 +233,39 @@ class web extends CI_Controller
 
             if ($_FILES['attachment']['name'] != '') {
 
-            $path = FCPATH . "assets/images/uploads/" . $new_id . "." . $old_attachment;
-            echo $path;
-            unlink($path);
+                $path = FCPATH . "assets/images/uploads/" . $new_id . "." . $old_attachment;
+                echo $path;
+                unlink($path);
 
-            $_FILES['file']['name']       = $_FILES['attachment']['name'];
-            $_FILES['file']['type']       = $_FILES['attachment']['type'];
-            $_FILES['file']['tmp_name']   = $_FILES['attachment']['tmp_name'];
-            $_FILES['file']['error']      = $_FILES['attachment']['error'];
-            $_FILES['file']['size']       = $_FILES['attachment']['size'];
+                $_FILES['file']['name']       = $_FILES['attachment']['name'];
+                $_FILES['file']['type']       = $_FILES['attachment']['type'];
+                $_FILES['file']['tmp_name']   = $_FILES['attachment']['tmp_name'];
+                $_FILES['file']['error']      = $_FILES['attachment']['error'];
+                $_FILES['file']['size']       = $_FILES['attachment']['size'];
 
-            $config['upload_path'] = './assets/images/uploads/';
-            $config['allowed_types'] = 'gif|jpg|png|csv|xlsx|xlx|doc|docx';
-            $config['max_size'] = '4000';
-            $config['max_width']  = '2200';
-            $config['max_height']  = '1800';
-            $config['overwrite'] = TRUE;
-            $config['encrypt_name'] = FALSE;
-            $config['remove_spaces'] = TRUE;
-            $name = $new_id;
-            $dname = explode(".", $_FILES['file']['name']);
-            $ext = end($dname);
-            $new_name = $name . '.' . $ext;
-            $config['file_name'] = $new_name;
+                $config['upload_path'] = './assets/images/uploads/';
+                $config['allowed_types'] = 'gif|jpg|png|csv|xlsx|xlx|doc|docx';
+                $config['max_size'] = '4000';
+                $config['max_width']  = '2200';
+                $config['max_height']  = '1800';
+                $config['overwrite'] = TRUE;
+                $config['encrypt_name'] = FALSE;
+                $config['remove_spaces'] = TRUE;
+                $name = $new_id;
+                $dname = explode(".", $_FILES['file']['name']);
+                $ext = end($dname);
+                $new_name = $name . '.' . $ext;
+                $config['file_name'] = $new_name;
 
-            if (!is_dir($config['upload_path'])) die("THE UPLOAD DIRECTORY DOES NOT EXIST");
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('attachment')) {
-                // echo $this->upload->display_errors();
-                $attachment = $this->upload->display_errors();
+                if (!is_dir($config['upload_path'])) die("THE UPLOAD DIRECTORY DOES NOT EXIST");
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('attachment')) {
+                    // echo $this->upload->display_errors();
+                    $attachment = $this->upload->display_errors();
+                } else {
+                    $attachment = $ext;
+                }
             } else {
-                $attachment = $ext;
-            }
-        } else {
                 $attachment = $old_attachment;
             }
 
@@ -292,7 +291,7 @@ class web extends CI_Controller
 
 
 
-    
+
 
 
 
@@ -318,13 +317,12 @@ class web extends CI_Controller
                 $this->db->order_by("class_id", "desc");
                 $this->db->limit(10, 0);
                 $data['details']  = $this->db->get()->result_array();
-                
             } else {
                 $this->db->from('class_list');
                 $this->db->order_by("class_id", "desc");
-                if($sn != ''){
+                if ($sn != '') {
                     $this->db->where("class_id", $sn);
-                }elseif($class_name != ''){
+                } elseif ($class_name != '') {
                     $this->db->where("class_name", $class_name);
                 } elseif ($creator != '') {
                     $this->db->where("creator", $creator);
@@ -335,7 +333,6 @@ class web extends CI_Controller
                 $data['sn']  = $sn;
                 $data['class_name1']  = $class_name;
                 $data['creator1']  = $creator;
-            
             }
 
             $totalarr = $this->db->get('class_list')->result_array();
@@ -409,7 +406,7 @@ class web extends CI_Controller
         }
     }
 
-    
+
 
     public function class_update()
     {
@@ -425,14 +422,10 @@ class web extends CI_Controller
             $data = array();
             $data = ['class_name' => $class_name, 'class_status' => $status];
             $this->db->where('class_id', $id);
-		    $this->db->update('class_list', $data);
+            $this->db->update('class_list', $data);
 
             $this->session->set_flashdata('msg', 'Class Update Successfully !');
             redirect(base_url() . 'web/class_index');
         }
     }
-
-
-
-
 }
