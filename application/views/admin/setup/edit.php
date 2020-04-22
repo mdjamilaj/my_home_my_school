@@ -100,18 +100,35 @@
 
                           <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                              <label for="#"><i class="fa fa-surprise"></i> Title :</label>
-                              <input type="text" value="<?php echo $edit_data->title; ?>" autocomplete="off" name="title" class="form-control form-control-user" required id="notice_date" placeholder="Title ..">
+                              <label for="#"><i class="fa fa-surprise"></i> Title English :</label>
+                              <input type="text" value="<?php echo $edit_data->title; ?>" autocomplete="off" name="title" class="form-control form-control-user" required id="notice_date" placeholder="Title English ..">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                              <label for="#"><i class="fa fa-surprise"></i> Unite :</label>
-                              <input type="text" value="<?php echo $edit_data->unite; ?>" autocomplete="off" name="unite" class="form-control form-control-user" required id="notice_date" placeholder="Unite ..">
+                              <label for="#"><i class="fa fa-arrow-circle-right"></i> Title Bangla :</label>
+                              <input type="text" value="<?php echo $edit_data->title_bn; ?>" autocomplete="off" name="title_bn" class="form-control form-control-user" required id="title_bn" placeholder="Title Bangla ..">
                             </div>
                           </div>
 
-                          <div class="form-group">
-                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Description :</label>
-                            <textarea type="text" autocomplete="off" name="description" class="form-control form-control-user des_english" required id="description" placeholder="Description English"> <?php echo $edit_data->details; ?></textarea>
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-surprise"></i> Unite English:</label>
+                              <input type="text" value="<?php echo $edit_data->unite; ?>" autocomplete="off" name="unite" class="form-control form-control-user" required id="notice_date" placeholder="Unite English ..">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-arrow-circle-right"></i> Unite Bangla:</label>
+                              <input type="text" value="<?php echo $edit_data->unite_bn; ?>" autocomplete="off" name="unite_bn" class="form-control form-control-user" required id="unite_bn" placeholder="Unite Bangla ..">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-arrow-circle-right"></i> Description English :</label>
+                              <textarea type="text" autocomplete="off" name="description" class="form-control form-control-user des_english" required id="description" placeholder="Description English"> <?php echo $edit_data->details; ?></textarea>
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-arrow-circle-right"></i> Description Bangla :</label>
+                              <textarea type="text" autocomplete="off" name="description_bn" class="form-control form-control-user des_english" required id="description_bn" placeholder="Description Bangla"> <?php echo $edit_data->details_bn; ?></textarea>
+                            </div>
                           </div>
 
                           <div class="form-group row">
@@ -165,6 +182,12 @@
 <script>
   var editor = CKEDITOR.replace('description');
   editor.on('required', function(evt) {
+    editor.showNotification('This field is required.', 'warning');
+    evt.cancel();
+  });
+
+  var editor1 = CKEDITOR.replace('description_bn');
+  editor1.on('required', function(evt) {
     editor.showNotification('This field is required.', 'warning');
     evt.cancel();
   });

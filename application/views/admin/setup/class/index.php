@@ -66,11 +66,15 @@
                                                 <form class="user" action="<?php echo base_url() ?>web/class_store" method="post" enctype="multipart/form-data">
 
                                                     <div class="form-group row">
-                                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Class Name :</label>
+                                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-surprise"></i> Class Name English :</label>
                                                             <input type="text" autocomplete="off" name="class_name" class="form-control form-control-user" required id="notice_date" placeholder="Enter Class Name ..">
                                                         </div>
-                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-surprise"></i> Class Name Bangla :</label>
+                                                            <input type="text" autocomplete="off" name="class_name_bn" class="form-control form-control-user" required id="notice_date" placeholder="Enter Class Name ..">
+                                                        </div>
+                                                        <div class="col-sm-4 mb-3 mb-sm-0">
                                                             <label for="#"><i class="fa fa-exclamation-circle"></i> Status :</label>
                                                             <select class="form-control" name="status">
                                                                 <option value="1" selected>Active</option>

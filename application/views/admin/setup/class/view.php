@@ -76,7 +76,7 @@
                                                                 <i class="fa fa-search"></i> SN <span class="required"></span>
                                                             </label>
                                                             <div class="col-md-9 col-sm-4 col-xs-12">
-                                                                <input type="text"  autocomplete="off" name="sn" class="form-control form-control-user" id="first_date" placeholder="Serial No ...">
+                                                                <input type="text" autocomplete="off" name="sn" class="form-control form-control-user" id="first_date" placeholder="Serial No ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4 mb-3 mb-sm-0">
@@ -84,7 +84,7 @@
                                                                 <i class="fa fa-search"></i> Class<span class="required"></span>
                                                             </label>
                                                             <div class="col-md-9 col-sm-4 col-xs-12">
-                                                                <input type="text" autocomplete="off"  name="class_name" class="form-control form-control-user " id="last_date" placeholder="Class Name ...">
+                                                                <input type="text" autocomplete="off" name="class_name" class="form-control form-control-user " id="last_date" placeholder="Class Name ...">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4 mb-3 mb-sm-0">
@@ -92,7 +92,7 @@
                                                                 <i class="fa fa-search"></i> Creator <span class="required"></span>
                                                             </label>
                                                             <div class="col-md-9 col-sm-4 col-xs-12">
-                                                                <input type="text" autocomplete="off"  name="creator" class="form-control form-control-user " id="last_date" placeholder="Creator ...">
+                                                                <input type="text" autocomplete="off" name="creator" class="form-control form-control-user " id="last_date" placeholder="Creator ...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -126,42 +126,53 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <?php if (isset($sn) || isset($class_name1) || isset($cretor1)) { ?> <p style="background: #000000; color: #ffffff;text-align: center;font-size: 16px;font-weight: 600;padding: 4px; width:550px; float: left; text-aling: center;"><?php if(isset($sn)){echo "&nbsp; Sn : ".$sn;} if(isset($class_name1)){echo "&nbsp;&nbsp;&nbsp; Class Name : ".$class_name1;} elseif(isset($creator1)){echo "&nbsp;&nbsp;&nbsp; Creator : ".$creator1;}  }?> </p>
-                        <p style="background: #000000; color: #ffffff;text-align: center;font-size: 16px;font-weight: 600;padding: 4px; width:90px; float: right; text-aling: center;">Total : <?php echo $total; ?> </p>
-                        <table class="table table-bordered table-striped jambo_table">
-                            <thead class="bg-dark">
-                                <tr>
-                                    <th class="text-center">SN</th>
-                                    <th class="text-center">Class Name</th>
-                                    <th class="text-center">Creator</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                <?php $i = 0;
-                                foreach ($details as $show_data) {
-                                    $i++; ?>
-                                    <?php if ($show_data['class_status'] == 0) { ?>
-                                        <tr style="background: #fbe6e6">
-                                            <td><?php echo  $show_data['class_id']; ?></td>
-                                            <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name']; ?></td>
-                                            <td><?php echo $show_data['creator']; ?></td>
-                                            <td class="edit_td" style="padding: 0 !important"><a href="<?php echo base_url(); ?>web/class_edit?edit=<?php echo $show_data['class_id'] ?>"><i class='fa fa-pencil-square-o'></i></a></td>
-                                        </tr>
-                                    <?php } else { ?>
-                                        <tr>
-                                            <td><?php echo  $show_data['class_id']; ?></td>
-                                            <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name']; ?></td>
-                                            <td><?php echo $show_data['creator']; ?></td>
-                                            <td class="edit_td" style="padding: 0 !important"><a href="<?php echo base_url(); ?>web/class_edit?edit=<?php echo $show_data['class_id'] ?>"><i class='fa fa-pencil-square-o'></i></a></td>
-                                        </tr>
-                                <?php }
-                                } ?>
-                            <tbody class="text-center" id="load-more">
+                        <?php if (isset($sn) || isset($class_name1) || isset($cretor1)) { ?> <p style="background: #000000; color: #ffffff;text-align: center;font-size: 16px;font-weight: 600;padding: 4px; width:550px; float: left; text-aling: center;"><?php if (isset($sn)) {
+                                                                                                                                                                                                                                                                echo "&nbsp; Sn : " . $sn;
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                            if (isset($class_name1)) {
+                                                                                                                                                                                                                                                                echo "&nbsp;&nbsp;&nbsp; Class Name : " . $class_name1;
+                                                                                                                                                                                                                                                            } elseif (isset($creator1)) {
+                                                                                                                                                                                                                                                                echo "&nbsp;&nbsp;&nbsp; Creator : " . $creator1;
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                        } ?> </p>
+                            <p style="background: #000000; color: #ffffff;text-align: center;font-size: 16px;font-weight: 600;padding: 4px; width:90px; float: right; text-aling: center;">Total : <?php echo $total; ?> </p>
+                            <table class="table table-bordered table-striped jambo_table">
+                                <thead class="bg-dark">
+                                    <tr>
+                                        <th class="text-center">SN</th>
+                                        <th class="text-center">Class Name</th>
+                                        <th class="text-center">Class Name Bangla</th>
+                                        <th class="text-center">Creator</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <?php $i = 0;
+                                    foreach ($details as $show_data) {
+                                        $i++; ?>
+                                        <?php if ($show_data['class_status'] == 0) { ?>
+                                            <tr style="background: #fbe6e6">
+                                                <td><?php echo  $show_data['class_id']; ?></td>
+                                                <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name']; ?></td>
+                                                <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name_bn']; ?></td>
+                                                <td><?php echo $show_data['creator']; ?></td>
+                                                <td class="edit_td" style="padding: 0 !important"><a href="<?php echo base_url(); ?>web/class_edit?edit=<?php echo $show_data['class_id'] ?>"><i class='fa fa-pencil-square-o'></i></a></td>
+                                            </tr>
+                                        <?php } else { ?>
+                                            <tr>
+                                                <td><?php echo  $show_data['class_id']; ?></td>
+                                                <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name']; ?></td>
+                                                <td class="text-left" style="font-weight: bold;"><?php echo $show_data['class_name_bn']; ?></td>
+                                                <td><?php echo $show_data['creator']; ?></td>
+                                                <td class="edit_td" style="padding: 0 !important"><a href="<?php echo base_url(); ?>web/class_edit?edit=<?php echo $show_data['class_id'] ?>"><i class='fa fa-pencil-square-o'></i></a></td>
+                                            </tr>
+                                    <?php }
+                                    } ?>
+                                <tbody class="text-center" id="load-more">
 
-                            </tbody>
-                            </tbody>
-                        </table>
+                                </tbody>
+                                </tbody>
+                            </table>
                     </div>
                 </div>
                 <?php if ($i == 0) { ?>
@@ -209,10 +220,10 @@
 
                 $.each(view, function(key, value) {
                     if (value['class_status'] == 0) {
-                        string1 = string1 + "<tr style='background: #fbe6e6'><td>" + value['class_id'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name'] + "</td><td class='text-center'>" + value['creator'] + "</td><td class='edit_td' style='padding: 0 !important'><a href=" + base_url + "web/class_edit?edit=" + value['class_id'] + "><i class='fa fa-pencil-square-o'></i></a></td></tr>";
+                        string1 = string1 + "<tr style='background: #fbe6e6'><td>" + value['class_id'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name_bn'] + "</td><td class='text-center'>" + value['creator'] + "</td><td class='edit_td' style='padding: 0 !important'><a href=" + base_url + "web/class_edit?edit=" + value['class_id'] + "><i class='fa fa-pencil-square-o'></i></a></td></tr>";
 
                     } else {
-                        string1 = string1 + "<tr><td>" + value['class_id'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name'] + "</td><td class='text-center'>" + value['creator'] + "</<td><td class='edit_td' style='padding: 0 !important'><a href=" + base_url + "web/class_edit?edit=" + value['class_id'] + "><i class='fa fa-pencil-square-o'></i></a></td></tr>";
+                        string1 = string1 + "<tr><td>" + value['class_id'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name'] + "</td><td class='text-left' style='font-weight: bold'>" + value['class_name_bn'] + "</td><td class='text-center'>" + value['creator'] + "</<td><td class='edit_td' style='padding: 0 !important'><a href=" + base_url + "web/class_edit?edit=" + value['class_id'] + "><i class='fa fa-pencil-square-o'></i></a></td></tr>";
                     }
                 });
                 // console.log(string1)

@@ -1,4 +1,3 @@
-
 <!-- page content -->
 <div class="right_col" role="main">
   <div>
@@ -17,7 +16,7 @@
           </div>
         </div> -->
         <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
-          <a href="<?php echo base_url();?>class_list" class="btn btn-primary btn-user btn-block">Class List</a>
+          <a href="<?php echo base_url(); ?>class_list" class="btn btn-primary btn-user btn-block">Class List</a>
         </div>
       </div>
     </div>
@@ -66,17 +65,21 @@
                       <div class="p-5">
                         <form class="user" action="<?php echo base_url() ?>web/class_update" method="post" enctype="multipart/form-data">
                           <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                             <label for="#"><i class="fa fa-exclamation-circle"></i> Class Name :</label>
-                              <input type="text"  autocomplete="off" value="<?php echo $edit_data->class_name ?>" name="class_name" required class="form-control form-control-user" id="title_bangla" placeholder="Class Name">
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-exclamation-circle"></i> Class Name English :</label>
+                              <input type="text" autocomplete="off" value="<?php echo $edit_data->class_name ?>" name="class_name" required class="form-control form-control-user" id="title_bangla" placeholder="Class Name English">
                             </div>
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label for="#" class="text-black"><i class="fa fa-exclamation-circle"></i> Status :</label>
-                            <select class="form-control" name="status" >
-                                <?php if($edit_data->class_status == 1){ ?>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-surprise"></i> Class Name Bangla :</label>
+                              <input type="text" autocomplete="off" value="<?php echo $edit_data->class_name_bn ?>" name="class_name_bn" class="form-control form-control-user" required id="notice_date" placeholder="Enter Class Name Bangla ..">
+                            </div>
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                              <label for="#" class="text-black"><i class="fa fa-exclamation-circle"></i> Status :</label>
+                              <select class="form-control" name="status">
+                                <?php if ($edit_data->class_status == 1) { ?>
                                   <option value="1" selected>Active</option>
                                   <option value="0">Inactive</option>
-                                <?php }else{ ?>
+                                <?php } else { ?>
                                   <option value="1">Active</option>
                                   <option value="0" selected>Inactive</option>
                                 <?php } ?>
@@ -88,18 +91,17 @@
                           <input type="hidden" autocomplete="off" value="<?php echo $edit_data->class_id ?>" name="id">
 
                           <div class="col-sm-6 mb-6 mb-sm-0">
-                            
-                          </div>
-                          </div>
 
-
-                          <div class="form-group row">
-                              <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
                           </div>
-                          <hr>
-                        </form>
-                        <hr>
                       </div>
+
+
+                      <div class="form-group row">
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
+                      </div>
+                      <hr>
+                      </form>
+                      <hr>
                     </div>
                   </div>
                 </div>
@@ -110,17 +112,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+</div>

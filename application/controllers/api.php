@@ -316,7 +316,7 @@ class api extends CI_Controller
     }
 
     #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/Class_ID/TOKEN
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndTodayDateToFetchRoutine/Class_ID/date/ynT6AmjW
+    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndTodayDateToFetchRoutine/Class_ID/ynT6AmjW
 
     public function classIdAndTodayDateToFetchRoutine()
     {

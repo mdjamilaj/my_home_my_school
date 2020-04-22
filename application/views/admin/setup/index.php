@@ -2,9 +2,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/dark.css">
 <style>
     input.flatpickr-input {
-    width: 75%;
-    height: 33px;
-}
+        width: 75%;
+        height: 33px;
+    }
 </style>
 <!-- page content -->
 <div class="right_col" role="main">
@@ -75,53 +75,69 @@
 
                                                     <div class="form-group row">
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-exclamation-circle"></i> Select Class :</label>
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Select Class :</label>
                                                             <select required class="form-control" name="class_id" id="class">
                                                                 <option value="" selected>Select once</option>
-                                                                <?php foreach ($data1 as $key => $show_data) {?>
+                                                                <?php foreach ($data1 as $key => $show_data) { ?>
                                                                     <option value="<?php echo $show_data['class_id']; ?>"><?php echo $show_data['class_name']; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-exclamation-circle"></i> Select Subject :</label>
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Select Subject :</label>
                                                             <select required class="form-control" name="sub_id" id="subject">
                                                                 <option value="" selected>Select once</option>
-                                                                <?php foreach ($data2 as $key => $show_data) {?>
+                                                                <?php foreach ($data2 as $key => $show_data) { ?>
                                                                     <option value="<?php echo $show_data['sub_id']; ?>"><?php echo $show_data['sub_name']; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
-                                                         </div>
+                                                    </div>
 
                                                     <div class="form-group row">
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Title :</label>
-                                                            <input type="text" autocomplete="off" name="title" class="form-control form-control-user" required id="notice_date" placeholder="Title ..">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Title English :</label>
+                                                            <input type="text" autocomplete="off" name="title" class="form-control form-control-user" required id="title" placeholder="Title English ..">
                                                         </div>
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Unite :</label>
-                                                            <input type="text" autocomplete="off" name="unite" class="form-control form-control-user" required id="notice_date" placeholder="Unite ..">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Title Bangla :</label>
+                                                            <input type="text" autocomplete="off" name="title_bn" class="form-control form-control-user" required id="title_bn" placeholder="Title Bangla ..">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Unite English :</label>
+                                                            <input type="text" autocomplete="off" name="unite" class="form-control form-control-user" required id="notice_date" placeholder="Unite English ..">
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Unite Bangla:</label>
+                                                            <input type="text" autocomplete="off" name="unite_bn" class="form-control form-control-user" required id="unite_bn" placeholder="Unite Bangla ..">
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label for="#"><i class="fa fa-arrow-circle-right"></i> Description :</label>
-                                                        <textarea type="text" autocomplete="off" name="description" class="form-control form-control-user des_english" required id="description" placeholder="Description English"></textarea>
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Description English :</label>
+                                                            <textarea type="text" autocomplete="off" name="description" class="form-control form-control-user des_english" required id="description" placeholder="Description English"></textarea>
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Description Bangla :</label>
+                                                            <textarea type="text" autocomplete="off" name="description_bn" class="form-control form-control-user des_english" required id="description_bn" placeholder="Description Bangla"></textarea>
+                                                        </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <div class="col-sm-4 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Video Link :</label>
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Video Link :</label>
                                                             <input type="text" autocomplete="off" name="video_link" class="form-control form-control-user" required id="notice_date" placeholder="Video Link ..">
                                                         </div>
                                                         <div class="col-sm-4 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-exclamation-circle"></i> Attachment :</label>
-                                                            <input type="file" id="fileinput"  style="padding-top: 2px !important; padding-bottom: 20px !important;" accept="image/*" name="attachment" class="form-control form-control-user pb-5">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Attachment :</label>
+                                                            <input type="file" id="fileinput" style="padding-top: 2px !important; padding-bottom: 20px !important;" accept="image/*" name="attachment" class="form-control form-control-user pb-5">
                                                         </div>
                                                         <div class="col-sm-4 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Date Time :</label>
-                                                            <div class="flatpickr" id="rangeDate"  class="form-control form-control-user">
+                                                            <label for="#"><i class="fa fa-arrow-circle-right"></i> Date Time :</label>
+                                                            <div class="flatpickr" id="rangeDate" class="form-control form-control-user">
                                                                 <input type="text" placeholder="Select Date.." required name="date_time" data-input> <!-- input is mandatory -->
 
                                                                 <a class="input-button" title="toggle" data-toggle>
@@ -155,19 +171,25 @@
 
 
 <script>
-  var editor = CKEDITOR.replace('description');
-  editor.on('required', function(evt) {
-    editor.showNotification('This field is required.', 'warning');
-    evt.cancel();
-  });
+    var editor = CKEDITOR.replace('description');
+    editor.on('required', function(evt) {
+        editor.showNotification('This field is required.', 'warning');
+        evt.cancel();
+    });
+
+    var editor1 = CKEDITOR.replace('description_bn');
+    editor1.on('required', function(evt) {
+        editor.showNotification('This field is required.', 'warning');
+        evt.cancel();
+    });
 </script>
 
 
 
 <script>
-  $('#class').on('change', function() {
-      var val = $('#class').val();
-      $.ajax({
+    $('#class').on('change', function() {
+        var val = $('#class').val();
+        $.ajax({
             url: "<?php echo base_url(); ?>web/fetch_subject",
             type: "POST",
             data: {
@@ -183,13 +205,13 @@
                 $('#subject').html('');
 
                 $.each(view, function(key, value) {
-                        string1 = string1 + "<option value='" + value['sub_id'] + "'>" + value['sub_name'] + "</option>";                
+                    string1 = string1 + "<option value='" + value['sub_id'] + "'>" + value['sub_name'] + "</option>";
                 });
                 console.log(string1)
                 $("#subject").html(string1);
             }
         })
-  });
+    });
 </script>
 
 

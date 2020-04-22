@@ -186,10 +186,13 @@ class web extends CI_Controller
             $description = $this->input->post('description');
             $unite = $this->input->post('unite');
             $video_link = $this->input->post('video_link');
+            $description_bn = $this->input->post('description_bn');
+            $unite_bn = $this->input->post('unite_bn');
+            $title_bn = $this->input->post('title_bn');
 
 
             $data = array();
-            $data = ['class_id' => $class_id, 'sub_id' => $sub_id, 'title' => $title, 'unite' => $unite, 'details' => $description, 'video_link' => $video_link, 'attachment' => $attachment, 'date_time' => $date_time];
+            $data = ['class_id' => $class_id, 'sub_id' => $sub_id, 'title' => $title, 'title_bn' => $title_bn, 'unite' => $unite, 'unite_bn' => $unite_bn, 'details' => $description, 'details_bn' => $description_bn, 'video_link' => $video_link, 'attachment' => $attachment, 'date_time' => $date_time];
             $this->db->insert('class_routine', $data);
 
             $this->session->set_flashdata('msg', 'Class Routine Create Successfully !');
@@ -276,10 +279,13 @@ class web extends CI_Controller
             $description = $this->input->post('description');
             $unite = $this->input->post('unite');
             $video_link = $this->input->post('video_link');
+            $description_bn = $this->input->post('description_bn');
+            $unite_bn = $this->input->post('unite_bn');
+            $title_bn = $this->input->post('title_bn');
 
 
             $data = array();
-            $data = ['class_id' => $class_id, 'sub_id' => $sub_id, 'title' => $title, 'unite' => $unite, 'details' => $description, 'video_link' => $video_link, 'attachment' => $attachment, 'date_time' => $date_time];
+            $data = ['class_id' => $class_id, 'sub_id' => $sub_id, 'title' => $title, 'title_bn' => $title_bn, 'unite' => $unite, 'unite_bn' => $unite_bn, 'details' => $description, 'details_bn' => $description_bn, 'video_link' => $video_link, 'attachment' => $attachment, 'date_time' => $date_time];
             $id = $this->input->post('id');
             $this->db->where('id', $id);
             $this->db->update('class_routine', $data);
@@ -372,13 +378,14 @@ class web extends CI_Controller
             redirect('/auth/login/');
         } else {
             $class_name = $this->input->post('class_name');
+            $class_name_bn = $this->input->post('class_name_bn');
             $status = $this->input->post('status');
             $user = $this->users->get_user_by_id($this->tank_auth->get_user_id(), TRUE);
             $creator = $user->firstname;
 
 
             $data = array();
-            $data = ['class_name' => $class_name, 'class_status' => $status, 'creator' => $creator];
+            $data = ['class_name' => $class_name, 'class_name_bn' => $class_name_bn, 'class_status' => $status, 'creator' => $creator];
             $this->db->insert('class_list', $data);
 
             $this->session->set_flashdata('msg', 'Class Create Successfully !');
@@ -415,12 +422,13 @@ class web extends CI_Controller
             redirect('/auth/login/');
         } else {
             $class_name = $this->input->post('class_name');
+            $class_name_bn = $this->input->post('class_name_bn');
             $status = $this->input->post('status');
             $id = $this->input->post('id');
 
 
             $data = array();
-            $data = ['class_name' => $class_name, 'class_status' => $status];
+            $data = ['class_name' => $class_name, 'class_name_bn' => $class_name_bn, 'class_status' => $status];
             $this->db->where('class_id', $id);
             $this->db->update('class_list', $data);
 
