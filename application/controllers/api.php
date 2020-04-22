@@ -15,6 +15,17 @@ class api extends CI_Controller
             $this->db->order_by("date_time", "asc");
             $result = $this->db->get('class_routine')->result_array();
 
+            for($i=0; $i<count($result); $i++){
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
+
             $data['result'] = $result;
             echo json_encode($data);
         } else {
@@ -35,13 +46,25 @@ class api extends CI_Controller
 
         if ($token == 'ynT6AmjW') {
 
-            $sql = "SELECT * FROM class_routine WHERE date_time >= '". $datetime . "' AND date_time < '" . $nextdatetime . "' ORDER BY `date_time` DESC";
-            $result = $this->db->query($sql)->result_array();
+            $this->db->order_by("id", "desc");
+            $this->db->where('date_time >=', $datetime);
+            $this->db->where('date_time <=', $nextdatetime);
+            $result = $this->db->get('class_routine')->result();
 
-            var_dump($result);
+            for ($i = 0; $i < count($result); $i++) {
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
 
-            // $data['result'] = $result;
-            // echo json_encode($data);
+
+            $data['result'] = $result;
+            echo json_encode($data);
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);
@@ -59,6 +82,17 @@ class api extends CI_Controller
             $this->db->order_by("date_time", "asc");
             $this->db->limit($limit, 0);
             $result = $this->db->get('class_routine')->result_array();
+
+            for ($i = 0; $i < count($result); $i++) {
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
 
             $data['result'] = $result;
             echo json_encode($data);
@@ -79,6 +113,16 @@ class api extends CI_Controller
             $this->db->order_by("date_time", "desc");
             $this->db->where('id', $id);
             $result = $this->db->get('class_routine')->row();
+
+
+            $class_id =  $result->class_id;
+            $sub_id =  $result->sub_id;
+            $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+            $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+            $cName = $class->class_name;
+            $sName = $sub->sub_name;
+            $result->class_name = $cName;
+            $result->subject_name = $sName;
 
             $data['result'] = $result;
             echo json_encode($data);
@@ -230,31 +274,8 @@ class api extends CI_Controller
     }
 
 
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/Class_ID/TOKEN
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/1/ynT6AmjW
-
-    public function classIdToFetchRoutine()
-    {
-        $token = $this->uri->segment(4);
-        $class_id = $this->uri->segment(3);
-
-        if ($token == 'ynT6AmjW') {
-
-            $this->db->order_by("id", "desc");
-            $this->db->where('class_id', $class_id);
-            $result = $this->db->get('class_routine')->result();
-
-            $data['result'] = $result;
-            echo json_encode($data);
-        } else {
-            $data['result'] = "Token Does't Matched";
-            echo json_encode($data);
-        }
-    }
-
-
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/Class_ID/sub_ID/TOKEN
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/1/1/ynT6AmjW
+    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndSubIdToFetchRoutine/Class_ID/sub_ID/TOKEN
+    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndSubIdToFetchRoutine/1/1/ynT6AmjW
 
     public function classIdAndSubIdToFetchRoutine()
     {
@@ -262,12 +283,29 @@ class api extends CI_Controller
         $sub_id = $this->uri->segment(4);
         $class_id = $this->uri->segment(3);
 
+        $date = date("Y-m-d");
+        $datetime = $date . ' 00:00';
+
         if ($token == 'ynT6AmjW') {
 
             $this->db->order_by("id", "desc");
+            $this->db->where('date_time >=', $datetime);
             $this->db->where('class_id', $class_id);
-            $this->db->where('sub_id', $sub_id);
-            $result = $this->db->get('class_routine')->result();
+            if($sub_id != 0){
+                $this->db->where('sub_id', $sub_id);
+            }
+            $result = $this->db->get('class_routine')->result_array();
+
+            for ($i = 0; $i < count($result); $i++) {
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
 
             $data['result'] = $result;
             echo json_encode($data);
@@ -278,7 +316,7 @@ class api extends CI_Controller
     }
 
     #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/Class_ID/TOKEN
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/1/ynT6AmjW
+    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndTodayDateToFetchRoutine/Class_ID/date/ynT6AmjW
 
     public function classIdAndTodayDateToFetchRoutine()
     {
@@ -294,10 +332,25 @@ class api extends CI_Controller
 
         if ($token == 'ynT6AmjW') {
 
-            $sql = "SELECT * FROM class_routine WHERE date_time >= '" . $datetime . "' AND date_time < '" . $nextdatetime . "'AND class_id = '$class_id' ORDER BY `date_time` DESC";
-            $result = $this->db->query($sql)->result_array();
+            $this->db->order_by("id", "desc");
+            $this->db->where('date_time >=', $datetime);
+            $this->db->where('date_time <=', $nextdatetime);
+            $this->db->where('class_id', $class_id);
+            $result = $this->db->get('class_routine')->result_array();
 
-            var_dump($result);
+            for ($i = 0; $i < count($result); $i++) {
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
+
+            $data['result'] = $result;
+            echo json_encode($data);
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);
@@ -313,20 +366,39 @@ class api extends CI_Controller
         $token = $this->uri->segment(5);
         $date = $this->uri->segment(4);
         $class_id = $this->uri->segment(3);
-echo $date;
-        $nextdate = date('Y-m-d', strtotime(' +1 day'));
+        $nextdate = date('Y-m-d', strtotime($date . ' +1 day'));
         $datetime = $date . ' 00:00';
         $nextdatetime = $nextdate . ' 00:00';
-        echo $datetime;
-        echo $nextdatetime;
 
         if ($token == 'ynT6AmjW') {
-            
+            $this->db->order_by("id", "desc");
+            $this->db->where('date_time >=', $datetime);
+            $this->db->where('date_time <=', $nextdatetime);
 
-            $sql = "SELECT * FROM class_routine WHERE date_time >= '" . $datetime . "' AND date_time < '" . $nextdatetime . "'AND class_id = '$class_id' ORDER BY `date_time` DESC";
-            $result = $this->db->query($sql)->result_array();
+            if (strpos($class_id, '-') !== false) {
 
-            var_dump($result);
+                $arr = explode("-", $class_id);
+                $this->db->where_in('class_id', $arr);
+                
+            } else {
+                $this->db->where('class_id', $class_id);
+            }
+
+            $result = $this->db->get('class_routine')->result_array();
+
+            for ($i = 0; $i < count($result); $i++) {
+                $class_id =  $result[$i]['class_id'];
+                $sub_id =  $result[$i]['sub_id'];
+                $class = $this->db->where('class_id', $class_id)->get('class_list')->row();
+                $sub = $this->db->where('sub_id', $sub_id)->get('subject_list')->row();
+                $cName = $class->class_name;
+                $sName = $sub->sub_name;
+                $result[$i]['class_name'] = $cName;
+                $result[$i]['subject_name'] = $sName;
+            }
+
+            $data['result'] = $result;
+            echo json_encode($data);
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);
