@@ -1,4 +1,3 @@
-
 <!-- page content -->
 <div class="right_col" role="main">
   <div>
@@ -17,7 +16,7 @@
           </div>
         </div> -->
         <div class="col-md-12 col-sm-12 col-xs-12 form-group ">
-          <a href="<?php echo base_url();?>subject_list" class="btn btn-primary btn-user btn-block">Subject List</a>
+          <a href="<?php echo base_url(); ?>subject_list" class="btn btn-primary btn-user btn-block">Subject List</a>
         </div>
       </div>
     </div>
@@ -66,25 +65,23 @@
                       <div class="p-5">
                         <form class="user" action="<?php echo base_url() ?>subject/update" method="post" enctype="multipart/form-data">
                           <div class="form-group row">
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
                               <label for="#"><i class="fa fa-exclamation-circle"></i> Select Class :</label>
                               <select class="form-control" name="class_id">
-                                  <?php foreach ($data1 as $key => $show_data) {?>
-                                      <option value="<?php echo $show_data['class_id']; ?>" <?php if($edit_data->class_id == $show_data['class_id']){echo "selected";} ?>><?php echo $show_data['class_name']; ?></option>
-                                  <?php } ?>
+                                <?php foreach ($data1 as $key => $show_data) { ?>
+                                  <option value="<?php echo $show_data['class_id']; ?>" <?php if ($edit_data->class_id == $show_data['class_id']) {
+                                                                                          echo "selected";
+                                                                                        } ?>><?php echo $show_data['class_name']; ?></option>
+                                <?php } ?>
                               </select>
-                          </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                             <label for="#"><i class="fa fa-exclamation-circle"></i> Subject Name :</label>
-                              <input type="text"  autocomplete="off" value="<?php echo $edit_data->sub_name ?>" name="sub_name" required class="form-control form-control-user" id="title_bangla" placeholder="Class Name">
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
-                            <label for="#" class="text-black"><i class="fa fa-exclamation-circle"></i> Status :</label>
-                            <select class="form-control" name="status" >
-                                <?php if($edit_data->sub_status == 1){ ?>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#" class="text-black"><i class="fa fa-exclamation-circle"></i> Status :</label>
+                              <select class="form-control" name="status">
+                                <?php if ($edit_data->sub_status == 1) { ?>
                                   <option value="1" selected>Active</option>
                                   <option value="0">Inactive</option>
-                                <?php }else{ ?>
+                                <?php } else { ?>
                                   <option value="1">Active</option>
                                   <option value="0" selected>Inactive</option>
                                 <?php } ?>
@@ -92,22 +89,35 @@
                             </div>
                           </div>
 
+                          <div class="form-group row">
+
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-exclamation-circle"></i> Subject Name English :</label>
+                              <input type="text" autocomplete="off" value="<?php echo $edit_data->sub_name ?>" name="sub_name" required class="form-control form-control-user" id="title_bangla" placeholder="Enter Subject Name English ..">
+                            </div>
+
+
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                              <label for="#"><i class="fa fa-exclamation-circle"></i> Subject Name Bangla :</label>
+                              <input type="text" autocomplete="off" value="<?php echo $edit_data->sub_name_bn ?>" name="sub_name_bn" class="form-control form-control-user" required id="notice_date" placeholder="Enter Subject Name Bangla ..">
+                            </div>
+                          </div>
+
 
                           <input type="hidden" autocomplete="off" value="<?php echo $edit_data->sub_id ?>" name="id">
 
                           <div class="col-sm-6 mb-6 mb-sm-0">
-                            
-                          </div>
-                          </div>
 
-
-                          <div class="form-group row">
-                              <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
                           </div>
-                          <hr>
-                        </form>
-                        <hr>
                       </div>
+
+
+                      <div class="form-group row">
+                        <button type="submit" class="btn btn-primary btn-user btn-block">Update</button>
+                      </div>
+                      <hr>
+                      </form>
+                      <hr>
                     </div>
                   </div>
                 </div>
@@ -118,17 +128,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
+</div>

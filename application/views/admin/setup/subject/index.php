@@ -64,22 +64,17 @@
                                         <div class="col-lg-8 justify-content-center x_panel">
                                             <div class="p-5">
                                                 <form class="user" action="<?php echo base_url() ?>subject/store" method="post" enctype="multipart/form-data">
-
                                                     <div class="form-group row">
-                                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
                                                             <label for="#"><i class="fa fa-exclamation-circle"></i> Select Class :</label>
                                                             <select class="form-control" name="class_id">
                                                                 <option value="" selected>Select once</option>
-                                                                <?php foreach ($data1 as $key => $show_data) {?>
+                                                                <?php foreach ($data1 as $key => $show_data) { ?>
                                                                     <option value="<?php echo $show_data['class_id']; ?>"><?php echo $show_data['class_name']; ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
-                                                        <div class="col-sm-4 mb-3 mb-sm-0">
-                                                            <label for="#"><i class="fa fa-surprise"></i> Subject Name :</label>
-                                                            <input type="text" autocomplete="off" name="sub_name" class="form-control form-control-user" required id="notice_date" placeholder="Enter Class Name ..">
-                                                        </div>
-                                                        <div class="col-sm-4 mb-3 mb-sm-0">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
                                                             <label for="#"><i class="fa fa-exclamation-circle"></i> Status :</label>
                                                             <select class="form-control" name="status">
                                                                 <option value="1" selected>Active</option>
@@ -87,7 +82,15 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div id="plus_show">
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-exclamation-circle"></i> Subject Name English :</label>
+                                                            <input type="text" autocomplete="off" name="sub_name" class="form-control form-control-user" required id="notice_date" placeholder="Enter Subject Name English ..">
+                                                        </div>
+                                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                                            <label for="#"><i class="fa fa-exclamation-circle"></i> Subject Name Bangla :</label>
+                                                            <input type="text" autocomplete="off" name="sub_name_bn" class="form-control form-control-user" required id="notice_date" placeholder="Enter Subject Name Bangla ..">
+                                                        </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-primary btn-user btn-block">Save</button>

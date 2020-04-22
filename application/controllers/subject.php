@@ -103,13 +103,14 @@ class subject extends CI_Controller
         } else {
             $class_id = $this->input->post('class_id');
             $sub_name = $this->input->post('sub_name');
+            $sub_name_bn = $this->input->post('sub_name_bn');
             $status = $this->input->post('status');
             $user = $this->users->get_user_by_id($this->tank_auth->get_user_id(), TRUE);
             $creator = $user->firstname;
 
 
             $data = array();
-            $data = ['class_id' => $class_id, 'sub_name' => $sub_name, 'sub_status' => $status, 'creator' => $creator];
+            $data = ['class_id' => $class_id, 'sub_name' => $sub_name, 'sub_name_bn' => $sub_name_bn, 'sub_status' => $status, 'creator' => $creator];
             $this->db->insert('subject_list', $data);
 
             $this->session->set_flashdata('msg', 'Subject Create Successfully !');
@@ -150,10 +151,11 @@ class subject extends CI_Controller
             $sub_name = $this->input->post('sub_name');
             $status = $this->input->post('status');
             $id = $this->input->post('id');
+            $sub_name_bn = $this->input->post('sub_name_bn');
 
 
             $data = array();
-             $data = ['class_id' => $class_id, 'sub_name' => $sub_name, 'sub_status' => $status, 'creator' => $creator];
+             $data = ['class_id' => $class_id, 'sub_name' => $sub_name, 'sub_name_bn' => $sub_name_bn, 'sub_status' => $status, 'creator' => $creator];
             $this->db->where('sub_id', $id);
 		    $this->db->update('subject_list', $data);
 

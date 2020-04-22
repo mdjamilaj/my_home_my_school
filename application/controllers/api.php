@@ -24,6 +24,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
             $data['result'] = $result;
@@ -60,6 +64,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
 
@@ -92,6 +100,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
             $data['result'] = $result;
@@ -123,6 +135,10 @@ class api extends CI_Controller
             $sName = $sub->sub_name;
             $result->class_name = $cName;
             $result->subject_name = $sName;
+            $cNameBn = $class->class_name_bn;
+            $sNameBn = $sub->sub_name_bn;
+            $result->class_name_bn = $cNameBn;
+            $result->subject_name_bn = $sNameBn;
 
             $data['result'] = $result;
             echo json_encode($data);
@@ -305,6 +321,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
             $data['result'] = $result;
@@ -347,6 +367,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
             $data['result'] = $result;
@@ -358,8 +382,7 @@ class api extends CI_Controller
     }
 
 
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdToFetchRoutine/Class_ID/TOKEN
-    #http://bdroutine.jamil.onlinehost.itlab.solutions/api/classIdAndAnyDateToFetchRoutine/1/ynT6AmjW
+
 
     public function classIdAndAnyDateToFetchRoutine()
     {
@@ -395,6 +418,10 @@ class api extends CI_Controller
                 $sName = $sub->sub_name;
                 $result[$i]['class_name'] = $cName;
                 $result[$i]['subject_name'] = $sName;
+                $cNameBn = $class->class_name_bn;
+                $sNameBn = $sub->sub_name_bn;
+                $result[$i]['class_name_bn'] = $cNameBn;
+                $result[$i]['subject_name_bn'] = $sNameBn;
             }
 
             $data['result'] = $result;
