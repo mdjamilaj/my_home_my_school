@@ -437,10 +437,63 @@ class api extends CI_Controller
 
 
 
-    public function token_generator()
+    public function userDataStore()
     {
-        $t = time();
-        echo "<script>setInterval(function () { console.log('call me!');";
-        echo "}, 200);</script>";
+        $token = $this->uri->segment(3);
+        $name = $this->input->post('name');
+        $phone_no = $this->input->post('phone_no');
+        $email = $this->input->post('email');
+
+        if ($token == 'ynT6AmjW') {
+
+            $data = array();
+            $data = ['name' => $name, 'phone_no' => $phone_no, 'email' => $email];
+            $this->db->insert('users_app', $data);
+
+        } else {
+            $data['result'] = "Token Does't Matched";
+            echo json_encode($data);
+        }
+        
+    }
+
+    public function ratingDataStore()
+    {
+        $token = $this->uri->segment(3);
+        $name = $this->input->post('name');
+        $phone_no = $this->input->post('phone_no');
+        $address = $this->input->post('address');
+        $rating = $this->input->post('rating');
+        $suggestion = $this->input->post('suggestion');
+
+
+        if ($token == 'ynT6AmjW') {
+
+            $data = array();
+            $data = ['name' => $name, 'phone_no' => $phone_no, 'address' => $address, 'rating' => $rating, 'suggestion' => $suggestion];
+            $this->db->insert('rating', $data);
+        } else {
+            $data['result'] = "Token Does't Matched";
+            echo json_encode($data);
+        }
+    }
+
+
+    public function versionControl()
+    {
+        $token = $this->uri->segment(3);
+        $app_version_code = $this->input->post('app_version_code');
+        $app_version_name = $this->input->post('app_version_name');
+        $app_version_details = $this->input->post('app_version_details');
+
+        if ($token == 'ynT6AmjW') {
+
+            $data = array();
+            $data = ['app_version_code' => $app_version_code, 'app_version_name' => $app_version_name, 'app_version_details' => $app_version_details];
+            $this->db->insert('rating', $data);
+        } else {
+            $data['result'] = "Token Does't Matched";
+            echo json_encode($data);
+        }
     }
 }
