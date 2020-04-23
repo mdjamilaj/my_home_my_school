@@ -450,6 +450,14 @@ class api extends CI_Controller
             $data = ['name' => $name, 'phone_no' => $phone_no, 'email' => $email];
             $this->db->insert('users_app', $data);
 
+            if ($this->db->affected_rows() > 0) {
+                $data['result'] = "Data Store SuccessFully";
+                echo json_encode($data);
+            }else{
+                $data['result'] = "Data Insert Failed";
+                echo json_encode($data);
+            }
+
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);
@@ -472,6 +480,14 @@ class api extends CI_Controller
             $data = array();
             $data = ['name' => $name, 'phone_no' => $phone_no, 'address' => $address, 'rating' => $rating, 'suggestion' => $suggestion];
             $this->db->insert('rating', $data);
+
+            if ($this->db->affected_rows() > 0) {
+                $data['result'] = "Data Store SuccessFully";
+                echo json_encode($data);
+            } else {
+                $data['result'] = "Data Insert Failed";
+                echo json_encode($data);
+            }
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);
@@ -482,15 +498,14 @@ class api extends CI_Controller
     public function versionControl()
     {
         $token = $this->uri->segment(3);
-        $app_version_code = $this->input->post('app_version_code');
-        $app_version_name = $this->input->post('app_version_name');
-        $app_version_details = $this->input->post('app_version_details');
 
         if ($token == 'ynT6AmjW') {
 
-            $data = array();
-            $data = ['app_version_code' => $app_version_code, 'app_version_name' => $app_version_name, 'app_version_details' => $app_version_details];
-            $this->db->insert('rating', $data);
+            $this->db->order_by("id", "desc");
+            $result = $this->db->get('app_info')->row();
+
+            $data['result'] = $result;
+            echo json_encode($data);
         } else {
             $data['result'] = "Token Does't Matched";
             echo json_encode($data);

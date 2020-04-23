@@ -50,6 +50,10 @@ $route['class_create'] = 'web/class_create';
 $route['subject_create'] = 'subject/create';
 
 
+
+$route['app_info_create'] = 'app_info/create';
+$route['app_info_list'] = 'app_info/index';
+
 $route['users_show'] = 'users_show';
 
 /* End of file routes.php */

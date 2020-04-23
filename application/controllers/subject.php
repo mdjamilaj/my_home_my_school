@@ -42,9 +42,9 @@ class subject extends CI_Controller
                 
             } else {
                 $this->db->from('subject_list');
-                $this->db->order_by("class_id", "desc");
+                $this->db->order_by("sub_id", "desc");
                 if($sn != ''){
-                    $this->db->where("class_id", $sn);
+                    $this->db->where("sub_id", $sn);
                 }elseif($sub_name != ''){
                     $this->db->where("sub_name", $sub_name);
                 } elseif ($class_id != '') {

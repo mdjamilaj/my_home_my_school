@@ -33,6 +33,7 @@
 							<li> <a href="<?php echo  base_url(); ?>class_routine_create"> Class Routine </a> </li>
 							<li> <a href="<?php echo  base_url(); ?>class_create"> Class </a> </li>
 							<li> <a href="<?php echo  base_url(); ?>subject_create"> Subject </a> </li>
+							<li> <a href="<?php echo  base_url(); ?>app_info_create"> App Info </a> </li>
 						</ul>
 					</li>
 					<li><a><i class="fa fa-book"></i> Reports<span class="fa fa-chevron-down"></span></a>
@@ -40,6 +41,7 @@
 							<li> <a href="<?php echo  base_url(); ?>/"> Class Routine </a> </li>
 							<li> <a href="<?php echo  base_url(); ?>class_list"> Class List </a> </li>
 							<li> <a href="<?php echo  base_url(); ?>subject_list"> Subject List </a> </li>
+							<li> <a href="<?php echo  base_url(); ?>app_info_list"> App Info List </a> </li>
 						</ul>
 					</li>
 					<li>
